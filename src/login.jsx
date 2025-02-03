@@ -30,6 +30,8 @@ function Login () {
         const data = await res.json();
         alert(data.msg || `signup successfull`)
 
+        localStorage.setItem("username", userName);
+
         setUserName("");
         setPass("");
         navigate("/dashboard");
