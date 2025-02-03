@@ -38,13 +38,13 @@ function Dashboard () {
             name={todo.title} // Directly access properties of each todo
             description={todo.description}
             priority={todo.priority}
-            // deadline={todo.deadline || "2025-02-03"} // Use provided deadline or fallback
+            deadline={todo.deadline} // Use provided deadline or fallback
           />
         ))}
       </div>
       <br />
       <br />
-      <CreateTodo />
+      <CreateTodo updateTodoList={getTodoList}/>
     </div>
     </>
 }

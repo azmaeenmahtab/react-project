@@ -19,7 +19,7 @@ const style = {
 
     
   };
-function CreateTodo () {
+function CreateTodo ({updateTodoList}) {
     const [isOPen, setIsOpen] = useState(false)
     const [taskName , setTaskName] = useState("");
     const [description , setDescription] = useState("");
@@ -53,6 +53,8 @@ function CreateTodo () {
         alert("Task Added Successfully")
 
         setIsOpen(false)
+
+        updateTodoList();
     }
 
     return <>

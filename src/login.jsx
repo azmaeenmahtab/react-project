@@ -39,7 +39,8 @@ function Login () {
         alert(`error occured ${error.message}`)
 
     }
-        
+
+  
     }
 
     return <div>
@@ -49,7 +50,9 @@ function Login () {
          <TextField placeholder="password" value={password} onChange={(e) => setPass(e.target.value)}/>
          <Button variant="outlined" onClick={clickHandler}>LOGIN</Button>
          </div><br />
-         <div>Dont have any acount ? <a href="">Sign Up Now</a></div>
+         <div>Dont have any acount ?  <Button onClick={() => {
+            navigate("/signup")
+         }}>Sign Up Now</Button></div>
 
     </div>
 
