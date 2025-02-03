@@ -28,7 +28,7 @@ function Login () {
         }
 
         const data = await res.json();
-        alert(data.msg || `signup successfull`)
+        alert(data.msg || `Login successfull`)
 
         localStorage.setItem("username", userName);
 

@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import { TextField } from '@mui/material';
 import { useState } from 'react';
 import { Button}from '@mui/material';
-import { jsx } from '@emotion/react';
+ 
 
 const style = {
     position: 'absolute',
@@ -23,20 +23,21 @@ function CreateTodo () {
     const [isOPen, setIsOpen] = useState(false)
     const [taskName , setTaskName] = useState("");
     const [description , setDescription] = useState("");
-    const [priority , setPriority] = useState("0");
+    const [priority , setPriority] = useState("");
     const [deadline , setDeadline] = useState("");
 
     const addTodo = async () => {
+        
         const body = {
                 "title": taskName,
                 "description": description,
-                "deadline": deadline,
+                "deadline":   new Date(deadline).toISOString(),
                 "priority": parseInt(priority)
         }
 
         const res = await fetch("http://3.109.211.104:8001/todo",{
             method: "POST", 
-            header:{
+            headers:{
                 "Content-Type" : "application/json"
             },
             body: JSON.stringify(body)
@@ -64,7 +65,7 @@ function CreateTodo () {
         <Box sx={style}>
           <TextField placeholder="Task Name" value={taskName} onChange={(e) => setTaskName(e.target.value)} /><br /><br />
           <TextField placeholder="Description"  value={description} onChange={(e) => setDescription(e.target.value)} /><br /><br />
-          <TextField placeholder="Deadline"  value={deadline} onChange={(e) => setDeadline(e.target.value)} /><br /><br />
+          <TextField placeholder="Deadline" type="datetime-local"  value={deadline} onChange={(e) => setDeadline(e.target.value)} /><br /><br />
           <TextField placeholder="Priority"  value={priority} onChange={(e) => setPriority(e.target.value)} />
           <br /><br />
           <Button variant='contained' onClick={addTodo}>Create</Button>

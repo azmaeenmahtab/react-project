@@ -8,7 +8,7 @@ function Todo ({name, description, priority, deadline}) {
         <h3>Name of Task : {name}</h3>
         <h3>Description : {description}</h3>
         <h3>Priority : {priority}</h3>
-        <h3>Deadline : {deadline}</h3>
+        {/* <h3>Deadline: {deadline}</h3> */}
         <div>
             <Button variant="outlined">Completed</Button>
         </div>
