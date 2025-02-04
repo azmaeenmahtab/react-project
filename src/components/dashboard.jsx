@@ -34,12 +34,15 @@ function Dashboard () {
       <div>
         {todoList.map((todo, index) => (
           <Todo
+            id={todo.id}
             key={index} // Add a unique key for each item
             name={todo.title} // Directly access properties of each todo
             description={todo.description}
             priority={todo.priority}
-            deadline={todo.deadline} // Use provided deadline or fallback
-          />
+            deadline={todo.deadline}
+            todoList={todoList}
+            setTodoList={setTodoList}
+           />
         ))}
       </div>
       <br />
