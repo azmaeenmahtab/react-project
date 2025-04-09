@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Todo } from "./todo";
+import { Stopwatch } from "./stopwatch";
  
 import { CreateTodo } from "./createTodoModal";
 function Dashboard () {
@@ -16,7 +17,7 @@ function Dashboard () {
 
     const [todoList, setTodoList] = useState([]);
     async function getTodoList () {
-        const res = await fetch ("http://3.109.211.104:8001/todos");
+        const res = await fetch ("https://5nvfy5p7we.execute-api.ap-south-1.amazonaws.com/dev/todos");
 
         if(!res.ok){
             const err = await res.json();
@@ -32,6 +33,7 @@ function Dashboard () {
     return <>
         <div>
       <div>
+      <Stopwatch />
         {todoList.map((todo, index) => (
           <Todo
             id={todo.id}

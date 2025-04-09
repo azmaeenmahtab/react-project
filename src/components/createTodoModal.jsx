@@ -35,7 +35,7 @@ function CreateTodo ({updateTodoList}) {
                 "priority": parseInt(priority)
         }
 
-        const res = await fetch("http://3.109.211.104:8001/todo",{
+        const res = await fetch("https://5nvfy5p7we.execute-api.ap-south-1.amazonaws.com/dev/todo",{
             method: "POST", 
             headers:{
                 "Content-Type" : "application/json"

@@ -10,7 +10,7 @@ function DeleteTask({Id, todoList, setTodoList}) {
 
         try {
             // Delete the task with the given taskId
-            const response = await fetch(`http://3.109.211.104:8001/todo/${taskId}`, {
+            const response = await fetch(`https://5nvfy5p7we.execute-api.ap-south-1.amazonaws.com/dev/todo/${taskId}`, {
                 method: "DELETE",
             });
 

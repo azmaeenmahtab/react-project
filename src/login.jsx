@@ -10,7 +10,7 @@ function Login () {
     
     const clickHandler = async () => {
         try{
-        const res = await fetch ("http://3.109.211.104:8001/login",{
+        const res = await fetch ("https://5nvfy5p7we.execute-api.ap-south-1.amazonaws.com/dev/login",{
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"
