@@ -53,20 +53,28 @@ function Create () {
     }
 
     return <>
-        
+        <div style={{background:'#F0F4F3', width : '1200px', height: '100vh ', paddingTop : '0px', marginTop:'0px'}}>
+        <div style={{display:'flex', alignItems:'start', position:'absolute'}}>
+                    <img src="../src/assets/shape.png" alt="" />
+                </div>
+        <div  style={{position:'relative', top:'50px'}}>
         <div>
-        <div>SIGN UP</div><br />
-         <div style={{display : "flex", flexDirection : 'column' ,gap : '10px'}}>
+            <h1 className='poppins'>Welcome to Onboard! </h1>
+
+            <h4 className='poppins'>Let’s help to meet up your tasks.</h4>
+        </div>
+        <br />
+         <div style={{display : "flex", flexDirection : 'column' ,gap : '10px', width:'500px', margin:' 0 auto'}}>
          <TextField placeholder="name" value={name} onChange={(e) => setName(e.target.value)}  />
          <TextField placeholder="username" value={userName} onChange={(e) => setUserName(e.target.value)}  />
          <TextField placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
          <TextField placeholder="phone" value={phone} onChange={(e) => setPhone(e.target.value)}/>
          <TextField placeholder="password" value={password} onChange={(e) => setPass(e.target.value)}/>
          <TextField placeholder="confirm password" value={Cpass} onChange={(e) => setCpass(e.target.value)}/>
-         <Button variant="outlined" onClick={handleClick}>Sign Up</Button>
+         <Button className='poppins' variant="outlined" onClick={handleClick} style={{color:'white', backgroundColor:'#50C2C9'}}>Sign Up</Button>
          </div><br />
            
-
+         </div>
     </div>
     </>
 }

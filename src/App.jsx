@@ -16,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        {/* <Route path="/register" element={<Login />} /> */}
         <Route path="/signup" element={<Create />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/createtodomodal" element={<CreateTodo />} />

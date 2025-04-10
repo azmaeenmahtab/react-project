@@ -13,19 +13,25 @@ function Home() {
         navigate("/login");
     };
 
+    const gotoCreate = () => {
+        navigate("/signup");
+    }
+
     return (
         <>
-            <div style={{background:'', width : '1200px', height: '100vh', paddingTop : '50px'}}>
-                <div style={{display:'flex', alignItems:'start'}}>
+            <div style={{background:'#F0F4F3', width : '1200px', height: '100vh', paddingTop : '0px'}}>
+                <div style={{display:'flex', alignItems:'start', position:'absolute'}}>
                     <img src="../src/assets/shape.png" alt="" />
                 </div>
+                <div  style={{position:'relative', top:'100px'}}>
                 <div>
                     <img src="../src/assets/logo.png" alt="" />
                 </div>
                 <h1 className="poppins">Gets things with TODOs</h1>
-                <h4  className="poppins">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit voluptatem molestiae assumenda vero rerum deleniti quas, odit soluta nobis, aliquam esse quaerat, natus molestias nostrum totam sunt facere hic earum!</h4>
-                <Button  className="poppins" style={{backgroundColor:'#50C2C9', color:'white'}}>Get Started</Button>
+                <h4  className="poppins" style={{maxWidth:'500px', textAlign:'center', margin:'0 auto', marginBottom:'30px'}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit voluptatem molestiae assumenda vero rerum deleniti quas, odit soluta nobis, aliquam esse quaerat, natus molestias nostrum totam sunt facere hic earum!</h4>
+                <Button  className="poppins" style={{backgroundColor:'#50C2C9', color:'white', width:'25%', fontWeight:'bold'}} onClick={gotoCreate}>Get Started</Button>
                 {/* <Button onClick={gotoLoginPage}>Login</Button> */}
+                </div>
             </div>
         </>
     );
