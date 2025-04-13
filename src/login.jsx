@@ -5,34 +5,38 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom"
 function Login () {
     const navigate = useNavigate();
-    const [userName, setUserName] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPass] = useState("");
     
     const clickHandler = async () => {
         try{
-        const res = await fetch ("https://5nvfy5p7we.execute-api.ap-south-1.amazonaws.com/dev/login",{
+        const res = await fetch ("https://todo-app-api-build.vercel.app/api/todos/login",{
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"
             },
             body: JSON.stringify({
             
-                "username": userName,
+                "email": email,
                 "password": password
               })
         })
         if(!res.ok){
             const error = await res.json();
             alert(error.message || `An error occured`);
+            
             return;
         }
 
         const data = await res.json();
+        console.log("Received Token:", data.token);
+
+        localStorage.setItem("token", data.token)
         alert(data.msg || `Login successfull`)
 
-        localStorage.setItem("username", userName);
+        // localStorage.setItem("username", userName);
 
-        setUserName("");
+        setEmail("");
         setPass("");
         navigate("/dashboard");
     }catch(error){
@@ -43,17 +47,18 @@ function Login () {
   
     }
 
-    return <div>
+    return <div style={{background:'linear-gradient(to right, #fab2ff, #1904e5)', width : '1200px', height: '100vh ', paddingTop : '0px', marginTop:'0px', color:"black", display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+        <div>
         <div>LOGIN</div><br />
-         <div style={{display : "flex", flexDirection : 'column' ,gap : '10px'}}>
-         <TextField placeholder="username" value={userName} onChange={(e) => setUserName(e.target.value)}/>
-         <TextField placeholder="password" value={password} onChange={(e) => setPass(e.target.value)}/>
-         <Button variant="outlined" onClick={clickHandler}>LOGIN</Button>
+         <div style={{display : "flex", flexDirection : 'column' ,gap : '10px', width:'500px', margin:'0 auto'}}>
+         <TextField className='textfieldDesign' placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+         <TextField className='textfieldDesign' placeholder="password" value={password} onChange={(e) => setPass(e.target.value)}/>
+         <Button style={{color:'black', background:'#fd746a'}} variant="outlined" onClick={clickHandler}>LOGIN</Button>
          </div><br />
-         <div>Dont have any acount ?  <Button onClick={() => {
+         <div>Dont have any acount ?  <Button style={{color:'black', background:'#fd746a', marginLeft:'10px'}} onClick={() => {
             navigate("/signup")
          }}>Sign Up Now</Button></div>
-
+        </div>
     </div>
 
 }

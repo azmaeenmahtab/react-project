@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import { TextField } from '@mui/material';
 import { useState } from 'react';
 import { Button}from '@mui/material';
+import { use } from 'react';
  
 
 const style = {
@@ -22,23 +23,28 @@ const style = {
 function CreateTodo ({updateTodoList}) {
     const [isOPen, setIsOpen] = useState(false)
     const [taskName , setTaskName] = useState("");
-    const [description , setDescription] = useState("");
-    const [priority , setPriority] = useState("");
-    const [deadline , setDeadline] = useState("");
+    // const [description , setDescription] = useState("");
+    // const [priority , setPriority] = useState("");
+    // const [deadline , setDeadline] = useState("");
+    const [completed, setCompleted] = useState("false");
+
+    const token = localStorage.getItem("token");
 
     const addTodo = async () => {
         
         const body = {
                 "title": taskName,
-                "description": description,
-                "deadline":   new Date(deadline).toISOString(),
-                "priority": parseInt(priority)
+                // "description": description,
+                // "deadline":   new Date(deadline).toISOString(),
+                // "priority": parseInt(priority)
+                "completed": completed
         }
 
-        const res = await fetch("https://5nvfy5p7we.execute-api.ap-south-1.amazonaws.com/dev/todo",{
+        const res = await fetch("https://todo-app-api-build.vercel.app/api/todos/",{
             method: "POST", 
             headers:{
-                "Content-Type" : "application/json"
+                "Content-Type" : "application/json",
+                "Authorization": `Bearer ${token}`,
             },
             body: JSON.stringify(body)
         })
@@ -66,9 +72,9 @@ function CreateTodo ({updateTodoList}) {
         <Modal open={isOPen} onClose={() => setIsOpen(false)}>
         <Box sx={style}>
           <TextField placeholder="Task Name" value={taskName} onChange={(e) => setTaskName(e.target.value)} /><br /><br />
-          <TextField placeholder="Description"  value={description} onChange={(e) => setDescription(e.target.value)} /><br /><br />
-          <TextField placeholder="Deadline" type="datetime-local"  value={deadline} onChange={(e) => setDeadline(e.target.value)} /><br /><br />
-          <TextField placeholder="Priority"  value={priority} onChange={(e) => setPriority(e.target.value)} />
+          {/* <TextField placeholder="Description"  value={description} onChange={(e) => setDescription(e.target.value)} /><br /><br />
+          <TextField placeholder="Deadline" type="datetime-local"  value={deadline} onChange={(e) => setDeadline(e.target.value)} /><br /><br /> */}
+          <TextField placeholder="Status"  value={completed} onChange={(e) => setCompleted(e.target.value)} />
           <br /><br />
           <Button variant='contained' onClick={addTodo}>Create</Button>
         </Box>

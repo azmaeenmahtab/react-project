@@ -55,3 +55,11 @@ body {
   font-family: "Poppins", sans-serif;
 
 }
+
+.textfieldDesign {
+  border: 2px solid #60B5FF;
+  border-radius: 10px;
+  color: white;
+  background-color: white;
+  border-color: white;
+}

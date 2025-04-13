@@ -7,17 +7,20 @@ import { CreateTodo } from "./createTodoModal";
 function Dashboard () {
     const navigate = useNavigate();
 
-    useEffect(( ) => {
-        const username = localStorage.getItem("username");
-        if(!username){
-            navigate("/login");
-        }
-        getTodoList();
-    },[])
-
+   
     const [todoList, setTodoList] = useState([]);
     async function getTodoList () {
-        const res = await fetch ("https://5nvfy5p7we.execute-api.ap-south-1.amazonaws.com/dev/todos");
+
+      const token = localStorage.getItem("token");
+      console.log("Token from localStorage:", token);
+
+      const res = await fetch ("https://todo-app-api-build.vercel.app/api/todos/",{
+        method:"GET",
+        headers:{
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        }
+      });
 
         if(!res.ok){
             const err = await res.json();
@@ -28,7 +31,24 @@ function Dashboard () {
         const data = await res.json();
         setTodoList(data);
         // console.log(todoList)
+
+       
+  
     }
+
+    useEffect(( ) => {
+      // const username = localStorage.getItem("username");
+      // if(!username){
+      //     navigate("/login");
+      // }
+      const token = localStorage.getItem("token");
+      console.log(token)
+      if(!token){
+        navigate("/login");
+      }else{
+      getTodoList();
+      }
+  },[])
 
     return <>
         <div>

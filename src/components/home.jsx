@@ -19,9 +19,9 @@ function Home() {
 
     return (
         <>
-            <div style={{background:'#F0F4F3', width : '1200px', height: '100vh', paddingTop : '0px'}}>
+            <div style={{background:'linear-gradient(to right, #fab2ff, #1904e5)', width : '1200px', height: '100vh', paddingTop : '0px'}}>
                 <div style={{display:'flex', alignItems:'start', position:'absolute'}}>
-                    <img src="../src/assets/shape.png" alt="" />
+                    {/* <img src="../src/assets/shape.png" alt="" /> */}
                 </div>
                 <div  style={{position:'relative', top:'100px'}}>
                 <div>

@@ -19,13 +19,13 @@ function Create () {
         const body = {
             "name": name,
             "email": email,
-            "phone": phone,
-            "username": userName,
+            // "phone": phone,
+            // "username": userName,
             "password": password,
-            "profile_picture": ""
+            // "profile_picture": ""
         }
         
-        const response = await fetch("https://5nvfy5p7we.execute-api.ap-south-1.amazonaws.com/dev/register", {
+        const response = await fetch("https://todo-app-api-build.vercel.app/api/todos/register", {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"
@@ -52,12 +52,16 @@ function Create () {
 
     }
 
-    return <>
-        <div style={{background:'#F0F4F3', width : '1200px', height: '100vh ', paddingTop : '0px', marginTop:'0px'}}>
+    const gotoLogin = () => {
+        navigate("/login");
+    }
+
+    return <div>
+        <div className='poppins' style={{background:'linear-gradient(to right, #fab2ff, #1904e5)', width : '1200px', height: ' ', paddingTop : '0px', marginTop:'0px', color:"black"}}>
         <div style={{display:'flex', alignItems:'start', position:'absolute'}}>
-                    <img src="../src/assets/shape.png" alt="" />
-                </div>
-        <div  style={{position:'relative', top:'50px'}}>
+                    {/* <img src="../src/assets/shape.png" alt="" /> */}
+        </div>
+        <div  style={{position:'relative', top:'50px', paddingBottom:"50px"}}>
         <div>
             <h1 className='poppins'>Welcome to Onboard! </h1>
 
@@ -65,18 +69,21 @@ function Create () {
         </div>
         <br />
          <div style={{display : "flex", flexDirection : 'column' ,gap : '10px', width:'500px', margin:' 0 auto'}}>
-         <TextField placeholder="name" value={name} onChange={(e) => setName(e.target.value)}  />
-         <TextField placeholder="username" value={userName} onChange={(e) => setUserName(e.target.value)}  />
-         <TextField placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-         <TextField placeholder="phone" value={phone} onChange={(e) => setPhone(e.target.value)}/>
-         <TextField placeholder="password" value={password} onChange={(e) => setPass(e.target.value)}/>
-         <TextField placeholder="confirm password" value={Cpass} onChange={(e) => setCpass(e.target.value)}/>
-         <Button className='poppins' variant="outlined" onClick={handleClick} style={{color:'white', backgroundColor:'#50C2C9'}}>Sign Up</Button>
+         <TextField className='textfieldDesign' placeholder="name" value={name} onChange={(e) => setName(e.target.value)}  />
+         <TextField className='textfieldDesign' placeholder="username" value={userName} onChange={(e) => setUserName(e.target.value)}  />
+         <TextField className='textfieldDesign' placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+         <TextField className='textfieldDesign' placeholder="phone" value={phone} onChange={(e) => setPhone(e.target.value)}/>
+         <TextField className='textfieldDesign' placeholder="password" value={password} onChange={(e) => setPass(e.target.value)}/>
+         <TextField className='textfieldDesign' placeholder="confirm password" value={Cpass} onChange={(e) => setCpass(e.target.value)}/>
+         <Button className='poppins' variant="outlined" onClick={handleClick} style={{color:'black', background:'#fd746a'}}>Sign Up</Button>
+         <h4 style={{marginRight:'10px'}}>Already have an account? <Button className='poppins'  style={{color:'black', backgroundColor:'#fd746a', marginLeft:'10px', borderRadius:'10px'}} variant="outlined" onClick={gotoLogin}>Login Now</Button></h4>
          </div><br />
            
          </div>
     </div>
-    </>
+
+    </div>
+    
 }
 
 export {Create};
